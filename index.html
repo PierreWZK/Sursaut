@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sursaut · Quatre réflexes que vous ne saviez pas avoir</title>
+    <meta name="description" content="Sursaut, le jeu de réflexes qui change : ne pas réagir aux leurres, taper sur le temps qui manque, viser une lueur dans le noir, entendre d'où vient un son. Un Sursaut du jour, le même pour tous.">
+    <meta name="theme-color" content="#0c0b12">
+    <meta property="og:title" content="Sursaut · Quatre réflexes que vous ne saviez pas avoir">
+    <meta property="og:description" content="Feinte, Contretemps, Pénombre, Tympan : quatre épreuves de réflexes qui changent du carré qui devient vert.">
+    <meta property="og:image" content="docs/preview.png">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#epreuves">Aller aux épreuves</a>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="logo" href="./" aria-label="Sursaut, accueil">
+            <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M2 18h7l3-8 4 16 4-22 3 14h7"/></svg>
+            Sursaut
+        </a>
+        <nav class="site-nav" aria-label="Navigation principale">
+            <a href="#epreuves">Épreuves</a>
+            <a href="#jour">Sursaut du jour</a>
+            <a href="#mesure">Comment on mesure</a>
+        </nav>
+        <a class="button button-primary button-small" href="jour.html">Jouer</a>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-copy">
+                <p class="eyebrow">Jeu de réflexes · 4 épreuves · 3 minutes par jour</p>
+                <h1>Quatre réflexes que vous <em>ne saviez pas</em> avoir.</h1>
+                <p class="lede">Oubliez le carré qui devient vert. Sursaut teste ce qu'on ne mesure jamais : savoir <strong>ne pas</strong> réagir, sentir un rythme, voir dans le noir, entendre d'où vient un son.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="jour.html">Faire le Sursaut du jour</a>
+                    <a class="button button-ghost" href="#epreuves">Choisir une épreuve</a>
+                </div>
+                <p class="hero-note">Gratuit, sans compte, sur ordinateur et sur mobile. Un casque pour Tympan.</p>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+                <svg class="pulse-line" viewBox="0 0 600 160" preserveAspectRatio="none">
+                    <path d="M0 80h170l14-22 12 22h60l12-62 16 120 14-90 12 32h70l12-14 12 14h196"/>
+                </svg>
+                <ul class="hero-chips">
+                    <li class="chip chip-feinte"><span>🎭 Feinte</span><strong>287 ms</strong><small>4 / 5 feintes évitées</small></li>
+                    <li class="chip chip-contretemps"><span>🥁 Contretemps</span><strong>+12 ms</strong><small>pile sur le silence</small></li>
+                    <li class="chip chip-penombre"><span>🔦 Pénombre</span><strong>341 ms</strong><small>à 9 px de la lueur</small></li>
+                    <li class="chip chip-tympan"><span>🎧 Tympan</span><strong>233 ms</strong><small>bonne oreille : gauche</small></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="epreuves" class="section">
+        <div class="container">
+            <p class="eyebrow">Les épreuves</p>
+            <h2>Un réflexe différent à chaque fois</h2>
+            <p class="section-lede">Chaque épreuve monte en difficulté en quatre phases et donne une note sur 100. Jouez-les librement, battez vos records.</p>
+
+            <div class="game-grid">
+                <article class="game-card" data-game="feinte">
+                    <header>
+                        <span class="game-emoji" aria-hidden="true">🎭</span>
+                        <div>
+                            <h3>Feinte</h3>
+                            <p class="game-reflex">L'inhibition · les yeux</p>
+                        </div>
+                    </header>
+                    <p>Une consigne, puis des signaux. Vite sur le vrai, <strong>immobile devant les leurres</strong> : un mot ROUGE écrit en bleu, un bip qui ment, une consigne qui s'inverse en pleine partie.</p>
+                    <ol class="game-phases"><li>Couleur</li><li>Mot</li><li>Son</li><li>Volte-face</li></ol>
+                    <footer>
+                        <span class="game-record" data-record="feinte">Pas encore joué</span>
+                        <a class="button button-small" href="jouer.html#feinte">Jouer</a>
+                    </footer>
+                </article>
+
+                <article class="game-card" data-game="contretemps">
+                    <header>
+                        <span class="game-emoji" aria-hidden="true">🥁</span>
+                        <div>
+                            <h3>Contretemps</h3>
+                            <p class="game-reflex">Le rythme · les oreilles</p>
+                        </div>
+                    </header>
+                    <p>Une boucle rythmique joue, puis <strong>un temps manque</strong>. Tapez exactement là où il aurait dû tomber : l'écart s'affiche en millisecondes, et le tempo accélère.</p>
+                    <ol class="game-phases"><li>Régulier</li><li>Accelerando</li><li>Boiteux</li><li>Syncopé</li></ol>
+                    <footer>
+                        <span class="game-record" data-record="contretemps">Pas encore joué</span>
+                        <a class="button button-small" href="jouer.html#contretemps">Jouer</a>
+                    </footer>
+                </article>
+
+                <article class="game-card" data-game="penombre">
+                    <header>
+                        <span class="game-emoji" aria-hidden="true">🔦</span>
+                        <div>
+                            <h3>Pénombre</h3>
+                            <p class="game-reflex">L'œil · les yeux</p>
+                        </div>
+                    </header>
+                    <p>Dans le noir, une <strong>lueur s'allume une fraction de seconde</strong>, puis s'éteint. Cliquez là où elle était, le plus vite et le plus près possible.</p>
+                    <ol class="game-phases"><li>Franche</li><li>Furtive</li><li>Pâle</li><li>Mirage</li></ol>
+                    <footer>
+                        <span class="game-record" data-record="penombre">Pas encore joué</span>
+                        <a class="button button-small" href="jouer.html#penombre">Jouer</a>
+                    </footer>
+                </article>
+
+                <article class="game-card" data-game="tympan">
+                    <header>
+                        <span class="game-emoji" aria-hidden="true">🎧</span>
+                        <div>
+                            <h3>Tympan</h3>
+                            <p class="game-reflex">L'oreille · au casque</p>
+                        </div>
+                    </header>
+                    <p>L'écran ne montre rien. Un son part <strong>à gauche ou à droite</strong> : choisissez le bon côté. Puis les sons se rapprochent du centre, et un écho tente de vous tromper.</p>
+                    <ol class="game-phases"><li>Net</li><li>Proche</li><li>Écho</li><li>Croisé</li></ol>
+                    <footer>
+                        <span class="game-record" data-record="tympan">Pas encore joué</span>
+                        <a class="button button-small" href="jouer.html#tympan">Jouer</a>
+                    </footer>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="jour" class="section section-alt">
+        <div class="container daily-inner">
+            <div>
+                <p class="eyebrow">⚡ Le Sursaut du jour</p>
+                <h2>Les quatre épreuves, trois minutes, le même tirage pour tous</h2>
+                <ul class="checks">
+                    <li>Un nouveau Sursaut chaque jour à minuit : mêmes leurres, mêmes rythmes, mêmes lueurs, mêmes sons pour tout le monde.</li>
+                    <li>Une note globale et votre <strong>profil de réflexes</strong> sur quatre axes, avec un titre : « Le métronome », « Le guetteur », « La chauve-souris »…</li>
+                    <li>Un résultat à partager, sans aucune donnée personnelle. Seule la première tentative compte.</li>
+                </ul>
+                <pre class="share-sample" aria-label="Exemple de résultat partagé">Sursaut · 19 oct. · 77/100
+🎭 82  🥁 64  🔦 71  🎧 90
+« Le guetteur »</pre>
+            </div>
+            <div class="panel daily-status" id="daily-status">
+                <p class="eyebrow" data-daily-date></p>
+                <p class="daily-headline">Pas encore joué aujourd'hui.</p>
+                <a class="button button-primary" href="jour.html">Faire le Sursaut du jour</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="profil" class="section">
+        <div class="container profile-inner">
+            <div>
+                <p class="eyebrow">Votre profil</p>
+                <h2>Vos records, sur quatre axes</h2>
+                <p class="section-lede">Chaque record dessine un axe : l'inhibition (Feinte), le rythme (Contretemps), l'œil (Pénombre) et l'oreille (Tympan). Tout reste sur cet appareil, sans compte.</p>
+                <p class="profile-empty" data-profile-empty>Jouez une épreuve pour voir apparaître votre profil.</p>
+            </div>
+            <div class="profile-chart" id="profile-chart"></div>
+        </div>
+    </section>
+
+    <section id="mesure" class="section section-alt">
+        <div class="container">
+            <p class="eyebrow">Comment on mesure</p>
+            <h2>Un jeu de réflexes ne vaut que par ses millisecondes</h2>
+            <div class="feature-grid">
+                <article class="feature">
+                    <h3>Dès l'enfoncement</h3>
+                    <p>Les appuis sont lus à l'instant où le doigt touche ou la touche s'enfonce, pas au relâchement.</p>
+                </article>
+                <article class="feature">
+                    <h3>À l'image près</h3>
+                    <p>Un signal compte à partir de l'image qui l'affiche vraiment à l'écran, pas du moment où le code l'a demandé.</p>
+                </article>
+                <article class="feature">
+                    <h3>Sur l'horloge du son</h3>
+                    <p>Les sons sont calés sur l'horloge audio, stable à la milliseconde. Une calibration corrige la latence de votre appareil.</p>
+                </article>
+                <article class="feature">
+                    <h3>Sans tricher</h3>
+                    <p>Délais aléatoires, faux départs comptés, réponses plus rapides que l'œil refusées : impossible d'anticiper.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container notice">
+            <h2>Avant de jouer</h2>
+            <ul>
+                <li><strong>Épilepsie photosensible</strong> : Pénombre affiche de brèves lueurs (jamais de flash plein écran, au plus une par seconde). Si la lumière vous gêne, passez cette épreuve.</li>
+                <li><strong>Casque</strong> : Tympan a besoin de la stéréo. Un test vérifie que gauche et droite sont dans le bon sens.</li>
+                <li><strong>Pour le plaisir</strong> : Sursaut mesure des temps pour s'amuser et progresser. Ce n'est pas un test médical.</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer container">
+    <span>Sursaut · Jour 06 du défi 30 jours, 30 projets</span>
+    <span>Fait avec JavaScript · <a href="https://github.com/PierreWZK/Sursaut" target="_blank" rel="noopener">Code sur GitHub ↗</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "sursaut",
+  "private": true,
+  "description": "Sursaut : quatre réflexes que vous ne saviez pas avoir (jour 06 du défi 30 jours, 30 projets)",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve .",
+    "test": "node --test"
+  }
+}

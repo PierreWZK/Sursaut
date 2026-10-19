@@ -1,0 +1,1366 @@
+/* ==========================================================================
+   Sursaut · identité sombre et nerveuse, une couleur par épreuve
+   ========================================================================== */
+
+:root {
+    color-scheme: dark;
+
+    --bg: #0c0b12;
+    --bg-deep: #07060b;
+    --surface: #15141f;
+    --surface-2: #1d1c2b;
+    --line: #2b2a3f;
+    --ink: #f4f1ff;
+    --muted: #a3a0bb;
+    --brand: #d4ff3a;
+    --brand-ink: #10120a;
+
+    --feinte: #ff4f9a;
+    --contretemps: #ffb43a;
+    --penombre: #8a98ff;
+    --tympan: #34e3c9;
+
+    --good: #7dffa8;
+    --mid: #ffd166;
+    --bad: #ff6b7a;
+
+    --radius: 18px;
+    --radius-small: 12px;
+    --font-display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+}
+
+[data-game="feinte"] { --accent: var(--feinte); }
+[data-game="contretemps"] { --accent: var(--contretemps); }
+[data-game="penombre"] { --accent: var(--penombre); }
+[data-game="tympan"] { --accent: var(--tympan); }
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: var(--brand);
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-weight: 800;
+}
+
+h2 {
+    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+    font-weight: 800;
+}
+
+h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+p {
+    margin: 0;
+}
+
+code,
+pre {
+    font-family: var(--font-mono);
+}
+
+:focus-visible {
+    outline: 3px solid var(--brand);
+    outline-offset: 3px;
+}
+
+.container {
+    width: min(1160px, 100% - 32px);
+    margin-inline: auto;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 100;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    background: var(--brand);
+    color: var(--brand-ink);
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    top: 12px;
+}
+
+.eyebrow {
+    margin-bottom: 0.75rem;
+    color: var(--brand);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+[data-game] .eyebrow {
+    color: var(--accent);
+}
+
+.lede {
+    color: var(--muted);
+    font-size: 1.15rem;
+}
+
+/* --- Boutons ----------------------------------------------------------- */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-height: 48px;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--ink);
+    font: 600 1rem var(--font-body);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.button:hover {
+    border-color: color-mix(in srgb, var(--brand) 50%, var(--line));
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+.button:disabled {
+    cursor: wait;
+    opacity: 0.6;
+}
+
+.button-primary {
+    border-color: transparent;
+    background: var(--brand);
+    color: var(--brand-ink);
+}
+
+.button-primary:hover {
+    border-color: transparent;
+    background: #e4ff7a;
+}
+
+[data-game] .button-primary {
+    background: var(--accent);
+    color: #0b0a10;
+}
+
+.button-ghost {
+    background: transparent;
+}
+
+.button-link {
+    border-color: transparent;
+    background: transparent;
+    color: var(--muted);
+}
+
+.button-link:hover {
+    border-color: transparent;
+    color: var(--ink);
+}
+
+.button-small {
+    min-height: 40px;
+    padding: 0.45rem 1rem;
+    font-size: 0.92rem;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+}
+
+/* --- En-tête et pied de page ------------------------------------------ */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(12px);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 68px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--ink);
+    font: 800 1.35rem var(--font-display);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+}
+
+.logo-mark {
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: var(--brand);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.6;
+}
+
+.site-nav {
+    display: flex;
+    gap: 1.4rem;
+    margin-left: auto;
+}
+
+.site-nav a {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+    color: var(--ink);
+}
+
+.header-tag {
+    color: var(--brand);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    margin-top: 3rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.site-footer a {
+    color: var(--ink);
+}
+
+/* --- Accueil : héros --------------------------------------------------- */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(3.5rem, 8vw, 6.5rem);
+    background:
+        radial-gradient(60% 70% at 85% 20%, color-mix(in srgb, var(--feinte) 16%, transparent), transparent 70%),
+        radial-gradient(50% 60% at 10% 90%, color-mix(in srgb, var(--tympan) 12%, transparent), transparent 70%);
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero h1 em {
+    color: var(--brand);
+    font-style: normal;
+}
+
+.hero .lede {
+    max-width: 34rem;
+    margin-top: 1.4rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.hero-note {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.hero-visual {
+    position: relative;
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: linear-gradient(160deg, var(--surface-2), var(--bg-deep));
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.pulse-line {
+    width: 100%;
+    height: 130px;
+    overflow: visible;
+}
+
+.pulse-line path {
+    fill: none;
+    stroke: var(--brand);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    stroke-dasharray: 1100;
+    stroke-dashoffset: 1100;
+    filter: drop-shadow(0 0 8px color-mix(in srgb, var(--brand) 60%, transparent));
+    animation: draw 3.2s cubic-bezier(0.6, 0, 0.2, 1) infinite;
+}
+
+@keyframes draw {
+    0% { stroke-dashoffset: 1100; }
+    55%,
+    80% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -1100; }
+}
+
+.hero-chips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.chip {
+    display: grid;
+    gap: 0.1rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--chip);
+    border-radius: var(--radius-small);
+    background: var(--surface);
+}
+
+.chip span {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.chip strong {
+    color: var(--chip);
+    font: 700 1.5rem var(--font-mono);
+}
+
+.chip small {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.chip-feinte { --chip: var(--feinte); }
+.chip-contretemps { --chip: var(--contretemps); }
+.chip-penombre { --chip: var(--penombre); }
+.chip-tympan { --chip: var(--tympan); }
+
+/* --- Sections ------------------------------------------------------------ */
+
+.section {
+    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.section-alt {
+    border-block: 1px solid var(--line);
+    background: var(--bg-deep);
+}
+
+.section-lede {
+    max-width: 44rem;
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+
+.game-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 8%, var(--surface)), var(--surface) 45%);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+}
+
+.game-card header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.game-emoji {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    font-size: 1.6rem;
+}
+
+.game-reflex {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.game-card > p {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.game-card strong {
+    color: var(--ink);
+}
+
+.game-phases {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: phase;
+}
+
+.game-phases li {
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    counter-increment: phase;
+}
+
+.game-phases li::before {
+    content: counter(phase) ". ";
+    color: var(--accent);
+}
+
+.game-card footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+.game-card .button {
+    border-color: transparent;
+    background: var(--accent);
+    color: #0b0a10;
+}
+
+.game-record {
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.game-record.has-record {
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+.daily-inner,
+.profile-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.checks {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    color: var(--muted);
+    list-style: none;
+}
+
+.checks li {
+    position: relative;
+    padding-left: 1.75rem;
+}
+
+.checks li::before {
+    content: "⚡";
+    position: absolute;
+    left: 0;
+}
+
+.checks strong {
+    color: var(--ink);
+}
+
+.share-sample {
+    margin: 1.5rem 0 0;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-small);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.panel {
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.daily-status {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+}
+
+.daily-headline {
+    display: grid;
+    gap: 0.25rem;
+    font-size: 1.15rem;
+}
+
+.daily-score {
+    font: 700 3rem/1 var(--font-mono);
+}
+
+.daily-score small,
+.result-note small {
+    color: var(--muted);
+    font-size: 0.4em;
+}
+
+.daily-title {
+    color: var(--brand);
+    font: 800 1.4rem var(--font-display);
+}
+
+.streak {
+    color: var(--contretemps);
+    font-weight: 600;
+}
+
+.profile-chart {
+    max-width: 420px;
+    justify-self: center;
+    width: 100%;
+}
+
+.profile-empty {
+    margin-top: 1rem;
+    color: var(--muted);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.feature {
+    padding: 1.4rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.feature h3 {
+    margin-bottom: 0.5rem;
+    color: var(--brand);
+    font-size: 1.1rem;
+}
+
+.feature p {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.notice {
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.notice h2 {
+    font-size: 1.5rem;
+}
+
+.notice ul {
+    display: grid;
+    gap: 0.6rem;
+    margin: 1.25rem 0 0;
+    padding-left: 1.2rem;
+    color: var(--muted);
+}
+
+.notice strong {
+    color: var(--ink);
+}
+
+/* --- Radar ----------------------------------------------------------------- */
+
+.radar {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.radar-grid {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 1;
+}
+
+.radar-axis {
+    stroke: var(--line);
+    stroke-width: 1;
+}
+
+.radar-shape {
+    fill: color-mix(in srgb, var(--brand) 22%, transparent);
+    stroke: var(--brand);
+    stroke-linejoin: round;
+    stroke-width: 2.5;
+}
+
+.radar-dot { stroke: var(--bg); stroke-width: 1.5; }
+.radar-dot-feinte { fill: var(--feinte); }
+.radar-dot-contretemps { fill: var(--contretemps); }
+.radar-dot-penombre { fill: var(--penombre); }
+.radar-dot-tympan { fill: var(--tympan); }
+
+.radar-label {
+    fill: var(--muted);
+    font: 600 10px var(--font-body);
+}
+
+/* --- Pages de jeu : panneaux -------------------------------------------- */
+
+.game-main {
+    padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+.intro,
+.result,
+.final,
+.calibration,
+.headphones {
+    max-width: 760px;
+    margin-inline: auto;
+}
+
+.intro h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+}
+
+.intro .lede {
+    margin-block: 0.75rem 1.25rem;
+}
+
+.intro-phases {
+    display: grid;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: phase;
+}
+
+.intro-phases li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-small);
+    background: var(--bg);
+    color: var(--muted);
+    counter-increment: phase;
+}
+
+.intro-phases li::before {
+    content: counter(phase);
+    color: var(--accent, var(--brand));
+    font: 700 1rem var(--font-mono);
+}
+
+.intro-phases strong {
+    color: var(--ink);
+}
+
+.intro-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    list-style: none;
+}
+
+.intro-meta-line {
+    margin-top: 1rem;
+    color: var(--muted);
+}
+
+.notice-inline {
+    margin-top: 1.25rem;
+    padding: 0.85rem 1rem;
+    border-left: 3px solid var(--accent, var(--brand));
+    border-radius: 0 var(--radius-small) var(--radius-small) 0;
+    background: var(--bg);
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.notice-inline strong {
+    color: var(--ink);
+}
+
+.daily-steps {
+    display: grid;
+    gap: 0.6rem;
+    margin: 1.5rem 0;
+    padding: 0;
+    list-style: none;
+}
+
+.daily-steps li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-small);
+    background: var(--bg);
+    color: var(--muted);
+}
+
+.daily-steps strong {
+    color: var(--ink);
+}
+
+.transition-previous {
+    margin-bottom: 1.5rem;
+    color: var(--muted);
+}
+
+.transition-previous strong {
+    color: var(--ink);
+    font-family: var(--font-mono);
+}
+
+.result {
+    text-align: center;
+}
+
+.result .actions {
+    justify-content: center;
+}
+
+.result-note {
+    margin-top: 0.5rem;
+    font: 700 clamp(4rem, 14vw, 6.5rem)/1 var(--font-mono);
+    color: var(--accent, var(--brand));
+}
+
+.result-grade {
+    margin-top: 0.5rem;
+    font: 800 1.6rem var(--font-display);
+}
+
+.result-record {
+    margin-top: 0.5rem;
+    color: var(--muted);
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.badge-record {
+    background: var(--brand);
+    color: var(--brand-ink);
+}
+
+.result-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin: 2rem 0 0;
+    text-align: left;
+}
+
+.result-stats div {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-small);
+    background: var(--bg);
+}
+
+.result-stats dt {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.result-stats dd {
+    margin: 0;
+    font: 700 1.15rem var(--font-mono);
+}
+
+.final {
+    max-width: 880px;
+}
+
+.final-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.final .result-note {
+    color: var(--brand);
+}
+
+.final-title {
+    margin-top: 0.75rem;
+    color: var(--brand);
+    font: 800 1.8rem var(--font-display);
+}
+
+.final-description {
+    color: var(--muted);
+}
+
+.final-notes {
+    display: grid;
+    gap: 0.4rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.final-notes li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0.85rem;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    background: var(--bg);
+}
+
+.final-notes strong {
+    font-family: var(--font-mono);
+}
+
+.final-status {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.final .streak {
+    margin-top: 0.75rem;
+}
+
+/* --- Calibration et test du casque -------------------------------------- */
+
+.calibration h2,
+.headphones h2 {
+    margin-bottom: 0.75rem;
+}
+
+.calibration > p,
+.headphones > p {
+    color: var(--muted);
+}
+
+.calibration-pad {
+    display: grid;
+    place-items: center;
+    min-height: 220px;
+    margin-top: 1.5rem;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-deep);
+    touch-action: manipulation;
+    user-select: none;
+    cursor: pointer;
+}
+
+.calibration-status,
+.headphones-step {
+    min-height: 1.6em;
+    margin-top: 1rem;
+    color: var(--ink) !important;
+    font-weight: 600;
+}
+
+/* --- La scène d'une partie (plein écran) ------------------------------- */
+
+body.is-playing {
+    overflow: hidden;
+}
+
+.stage {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    background: var(--bg-deep);
+}
+
+/* Lignes fixes : la zone de jeu prend toute la hauteur restante, avec ou sans bandeau de consigne */
+.hud { grid-row: 1; }
+.hud-rule { grid-row: 2; }
+.arena { grid-row: 3; }
+
+.hud {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.25rem;
+    padding: 0.75rem clamp(1rem, 3vw, 1.5rem);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+}
+
+.hud-name {
+    font: 800 1.1rem var(--font-display);
+}
+
+.hud-phase {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.hud-count {
+    margin-left: auto;
+    color: var(--muted);
+    font: 700 0.95rem var(--font-mono);
+}
+
+.hud-quit {
+    min-height: 36px;
+    padding: 0.3rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font: 600 0.85rem var(--font-body);
+    cursor: pointer;
+}
+
+.hud-quit:hover {
+    color: var(--ink);
+}
+
+.hud-rule {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+    font: 800 clamp(1rem, 2.6vw, 1.35rem) var(--font-display);
+    text-align: center;
+}
+
+.arena {
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.feedback {
+    position: fixed;
+    left: 50%;
+    bottom: clamp(1.5rem, 8vh, 4rem);
+    z-index: 55;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    background: var(--surface-2);
+    font: 700 1.15rem var(--font-mono);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 8px);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.feedback.is-shown {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.feedback[data-tone="good"] { color: var(--good); }
+.feedback[data-tone="mid"] { color: var(--mid); }
+.feedback[data-tone="bad"] { color: var(--bad); }
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-content: center;
+    gap: 1rem;
+    justify-items: center;
+    padding: 2rem;
+    background: color-mix(in srgb, var(--bg-deep) 88%, transparent);
+    text-align: center;
+}
+
+.overlay[hidden] {
+    display: none;
+}
+
+.overlay-title {
+    color: var(--accent);
+    font: 800 clamp(2.2rem, 7vw, 4rem) var(--font-display);
+}
+
+.overlay-text {
+    max-width: 32rem;
+    font-size: clamp(1.1rem, 2.6vw, 1.4rem);
+    font-weight: 600;
+}
+
+.overlay-count {
+    color: var(--accent);
+    font: 700 clamp(5rem, 20vw, 9rem)/1 var(--font-mono);
+    animation: pop 0.6s ease-out;
+}
+
+@keyframes pop {
+    from { opacity: 0; transform: scale(1.4); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Feinte */
+
+/* Consigne inversée (Volte-face) : le bandeau passe au rouge */
+.hud-rule.is-inverted {
+    background: color-mix(in srgb, var(--bad) 38%, var(--bg));
+    color: #fff;
+    animation: flip 0.4s ease-out;
+}
+
+@keyframes flip {
+    from { transform: scaleY(0.4); }
+    to { transform: scaleY(1); }
+}
+
+/* Le bip de départ (phase 3) : la croix centrale tressaille, sans rien dire du signal à venir */
+.stage.is-bip .feinte-fixation {
+    animation: twitch 0.2s ease-out;
+}
+
+@keyframes twitch {
+    from { color: var(--ink); transform: scale(1.4); }
+    to { color: var(--line); transform: scale(1); }
+}
+
+.feinte-fixation {
+    color: var(--line);
+    font: 700 3rem var(--font-mono);
+}
+
+/* La couleur du signal (--signal) est posée par le script */
+.feinte-signal {
+    display: grid;
+    place-items: center;
+    color: var(--signal);
+    font: 800 clamp(3rem, 14vw, 7rem) var(--font-display);
+    letter-spacing: 0.02em;
+}
+
+.feinte-signal svg {
+    width: clamp(140px, 30vmin, 240px);
+    fill: var(--signal);
+}
+
+.feinte-signal[hidden],
+.feinte-fixation[hidden] {
+    display: none;
+}
+
+/* Contretemps */
+
+.beat-pulse {
+    width: clamp(120px, 30vmin, 220px);
+    aspect-ratio: 1;
+    border: 3px solid color-mix(in srgb, var(--contretemps) 45%, transparent);
+    border-radius: 50%;
+}
+
+.beat-pulse.is-beat {
+    animation: beat 0.32s ease-out;
+}
+
+.beat-pulse.is-accent {
+    animation-name: beat-accent;
+}
+
+@keyframes beat {
+    from { transform: scale(1.12); background: color-mix(in srgb, var(--contretemps) 30%, transparent); }
+    to { transform: scale(1); background: transparent; }
+}
+
+@keyframes beat-accent {
+    from { transform: scale(1.22); background: color-mix(in srgb, var(--contretemps) 55%, transparent); }
+    to { transform: scale(1); background: transparent; }
+}
+
+.beat-tempo {
+    position: absolute;
+    top: 1rem;
+    color: var(--muted);
+    font: 600 0.9rem var(--font-mono);
+}
+
+/* Pénombre */
+
+.penombre-arena {
+    background: #050409;
+    cursor: crosshair;
+}
+
+.penombre-arena.is-drifting {
+    background:
+        radial-gradient(40% 40% at 30% 40%, #0d0b18, transparent 70%),
+        radial-gradient(45% 45% at 70% 60%, #0b0d17, transparent 70%),
+        #050409;
+    background-size: 200% 200%;
+    animation: drift 7s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+    from { background-position: 0% 0%; }
+    to { background-position: 100% 100%; }
+}
+
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow) 0%, color-mix(in srgb, var(--glow) 55%, transparent) 35%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.marker {
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: fade 0.9s ease-out forwards;
+}
+
+.marker-target {
+    width: 34px;
+    height: 34px;
+    border: 2px solid var(--penombre);
+}
+
+.marker-click {
+    width: 10px;
+    height: 10px;
+    background: var(--ink);
+}
+
+@keyframes fade {
+    0%,
+    60% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Tympan */
+
+.tympan-arena {
+    grid-template-columns: 1fr auto 1fr;
+    place-items: stretch;
+}
+
+.tympan-half {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.25rem;
+    color: color-mix(in srgb, var(--muted) 40%, transparent);
+    font: 700 3rem var(--font-mono);
+}
+
+.tympan-half small {
+    font-size: 1rem;
+}
+
+.tympan-half:first-child {
+    border-right: 1px solid var(--line);
+}
+
+.tympan-half:last-child {
+    border-left: 1px solid var(--line);
+}
+
+.tympan-ear {
+    display: grid;
+    place-items: center;
+    padding-inline: clamp(1rem, 5vw, 3rem);
+    font-size: 3rem;
+    opacity: 0.35;
+}
+
+.tympan-ear.is-on {
+    animation: ear 0.5s ease-out;
+}
+
+@keyframes ear {
+    from { opacity: 1; transform: scale(1.15); }
+    to { opacity: 0.35; transform: scale(1); }
+}
+
+/* --- Mobile ------------------------------------------------------------- */
+
+@media (max-width: 860px) {
+    .hero-inner,
+    .daily-inner,
+    .profile-inner,
+    .final-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-nav {
+        display: none;
+    }
+
+    .header-inner {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-chips {
+        grid-template-columns: 1fr;
+    }
+
+    .hud-phase {
+        order: 5;
+        width: 100%;
+    }
+
+    .actions .button {
+        flex: 1 1 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .pulse-line path {
+        stroke-dashoffset: 0;
+    }
+
+    .penombre-arena.is-drifting {
+        animation: none;
+    }
+}
