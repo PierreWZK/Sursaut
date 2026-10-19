@@ -1,6 +1,8 @@
 # Sursaut · Quatre réflexes que vous ne saviez pas avoir
 
-> Jour 06 du défi **30 jours, 30 projets** · HTML, CSS et JavaScript, Web Audio · 🚧 **V1, mise en ligne à venir**
+> Jour 06 du défi **30 jours, 30 projets** · HTML, CSS et JavaScript, Web Audio · 🟢 **En ligne : [sursaut.projectp.fr](https://sursaut.projectp.fr)**
+
+![Page d'accueil de Sursaut](docs/preview.png)
 
 Les jeux de réflexes se ressemblent tous : un carré devient vert, on clique, on lit son temps. **Sursaut** mesure quatre réflexes qu'on ne teste presque jamais : savoir **ne pas** réagir, sentir un rythme, voir dans le noir, entendre d'où vient un son.
 
@@ -87,9 +89,9 @@ js/
 ├── games/                 Les quatre épreuves (même interface : plan, run, score, stats)
 └── ui/                    Scène de jeu, résultat, profil en radar, lancement
 tests/                     node --test, sans dépendance
-netlify.toml               Hébergement Netlify et en-têtes de sécurité
+docs/preview.png           Capture de l'accueil, affichée dans ce README
 ```
 
 ## Stack
 
-HTML, CSS et JavaScript en modules, sans framework ni dépendance · Web Audio · SVG · Netlify.
+HTML, CSS et JavaScript en modules, sans framework ni dépendance · Web Audio · SVG · Hébergement Coolify (site statique).
