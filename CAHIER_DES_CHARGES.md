@@ -1,6 +1,6 @@
 # Jour 6/30 — Sursaut, quatre réflexes que vous ne saviez pas avoir
 
-> Stack : **HTML, CSS et JavaScript** (modules, sans framework ni dépendance), **Web Audio**, hébergement **Netlify**.
+> Stack : **HTML, CSS et JavaScript** (modules, sans framework ni dépendance), **Web Audio**, hébergement **Coolify** (site statique).
 > Durée visée : **2 h 45** pour le MVP (section 4), les bonus ensuite.
 
 Ce document est notre contrat : on le suit étape par étape, et toute décision qui s'en écarte est d'abord notée ici.
@@ -26,7 +26,7 @@ Le **Sursaut du jour** enchaîne les quatre épreuves en version courte, avec le
 4. La **calibration** de Contretemps (décalage du son et du toucher) et le **test du casque** de Tympan.
 5. **Records et historique** sur l'appareil (`localStorage`), sans compte.
 6. Jouable à la **souris, au tactile et au clavier**, sur mobile comme sur ordinateur.
-7. En ligne sur Netlify, avec un README à jour.
+7. En ligne sur Coolify, avec un README à jour.
 
 ### Périmètre volontairement limité
 
@@ -150,7 +150,7 @@ Au casque. L'écran reste sombre et n'indique rien : un son part **à gauche ou 
 - **HTML, CSS, JavaScript** en modules ES, sans build ni dépendance. Servi par n'importe quel serveur statique (`npx serve .`).
 - **Web Audio** pour tous les sons, programmés sur l'horloge audio (`AudioContext.currentTime`) : c'est la seule façon d'avoir un rythme stable à la milliseconde pour Contretemps.
 - **SVG** pour le profil sur quatre axes et les petits graphiques de résultat.
-- **Netlify** pour l'hébergement (`netlify.toml`, en-têtes de sécurité, cache des fichiers statiques), sous-domaine `sursaut.projectp.fr`.
+- **Coolify** pour l'hébergement (site statique, HTTPS Let's Encrypt), sous-domaine `sursaut.projectp.fr`.
 
 ### Mesure du temps (le cœur du projet)
 
@@ -214,7 +214,7 @@ Lecture et écriture protégées (`try/catch`) : le jeu marche même si le stock
 
 ### Mise en ligne
 
-- Dépôt GitHub dédié, déployé par Netlify à chaque push sur `main` ; sous-domaine `sursaut.projectp.fr`.
+- Dépôt GitHub dédié, déployé par Coolify à chaque push sur `master` ; sous-domaine `sursaut.projectp.fr`.
 - En-têtes : `Content-Security-Policy` stricte (scripts du site seulement), `Referrer-Policy`, `Permissions-Policy`.
 
 ## 5. Planning minuté — 2 h 45 maximum

@@ -27,6 +27,3 @@ export function wait(ms, signal) {
         signal?.addEventListener('abort', onAbort, { once: true });
     });
 }
-
-/** Attend jusqu'à l'instant `at` (horloge performance.now) */
-export const waitUntil = (at, signal) => wait(at - now(), signal);

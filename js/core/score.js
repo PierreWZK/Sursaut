@@ -115,13 +115,6 @@ export function scoreTympan(trials) {
     };
 }
 
-export const SCORERS = {
-    feinte: scoreFeinte,
-    contretemps: scoreContretemps,
-    penombre: scorePenombre,
-    tympan: scoreTympan,
-};
-
 /** Le mot qui accompagne une note */
 export function grade(note) {
     if (note >= 90) return 'Fulgurant';
