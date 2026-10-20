@@ -12,6 +12,7 @@
     <meta property="og:title" content="Sursaut · Quatre réflexes que vous ne saviez pas avoir">
     <meta property="og:description" content="Sursaut, le jeu de réflexes qui change : ne pas réagir aux leurres, taper sur le temps qui manque, viser une lueur dans le noir, entendre d'où vient un son. Un Sursaut du jour, le même pour tous.">
     <meta property="og:url" content="https://sursaut.projectp.fr/">
+    <link rel="canonical" href="https://sursaut.projectp.fr/">
     <meta property="og:image" content="https://sursaut.projectp.fr/docs/og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -23,6 +24,35 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
     <link rel="stylesheet" href="css/style.css">
     <script type="module" src="js/app.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Sursaut",
+      "url": "https://sursaut.projectp.fr/",
+      "description": "Le jeu de réflexes qui change : ne pas réagir aux leurres, taper sur le temps qui manque, viser une lueur dans le noir, entendre d'où vient un son.",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "fr",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "image": "https://sursaut.projectp.fr/docs/og.png",
+      "author": {
+        "@type": "Person",
+        "name": "PierreWZK",
+        "url": "https://github.com/PierreWZK"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ProjectP",
+        "url": "https://projectp.fr/"
+      }
+    }
+    </script>
 </head>
 <body>
 <a class="skip-link" href="#epreuves">Aller aux épreuves</a>
@@ -216,7 +246,7 @@
 </main>
 
 <footer class="site-footer container">
-    <span>Sursaut · Jour 06 du défi 30 jours, 30 projets</span>
+    <span>Sursaut · Jour 06 du défi <a href="https://projectp.fr/">30 jours, 30 projets</a></span>
     <span>Fait avec JavaScript · <a href="https://github.com/PierreWZK/Sursaut" target="_blank" rel="noopener">Code sur GitHub ↗</a></span>
 </footer>
 </body>
