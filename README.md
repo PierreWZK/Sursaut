@@ -1,8 +1,14 @@
 # Sursaut · Quatre réflexes que vous ne saviez pas avoir
 
-> Jour 06 du défi **30 jours, 30 projets** · HTML, CSS et JavaScript, Web Audio · 🟢 **En ligne : [sursaut.projectp.fr](https://sursaut.projectp.fr)**
+🌐 **[sursaut.projectp.fr](https://sursaut.projectp.fr/)** · Jour 06 du défi **[30 jours, 30 projets](https://projectp.fr/)** · [Dépôt du défi](https://github.com/PierreWZK/30DaysProjects)
 
-![Page d'accueil de Sursaut](docs/preview.png)
+Stack : HTML, CSS et JavaScript, Web Audio.
+
+[![Page d'accueil de Sursaut](docs/preview-accueil.png)](https://sursaut.projectp.fr/)
+
+<p align="center">
+  <img src="docs/preview-mobile.png" alt="Sursaut sur téléphone" width="260">
+</p>
 
 Les jeux de réflexes se ressemblent tous : un carré devient vert, on clique, on lit son temps. **Sursaut** mesure quatre réflexes qu'on ne teste presque jamais : savoir **ne pas** réagir, sentir un rythme, voir dans le noir, entendre d'où vient un son.
 
@@ -95,3 +101,14 @@ docs/preview.png           Capture de l'accueil, affichée dans ce README
 ## Stack
 
 HTML, CSS et JavaScript en modules, sans framework ni dépendance · Web Audio · SVG · Hébergement Coolify (site statique).
+
+---
+
+## Le défi 30 jours, 30 projets
+
+Un projet complet par jour pendant 30 jours, chacun en ligne sur son propre sous-domaine.
+
+- 🗂️ **Tous les projets** : [projectp.fr](https://projectp.fr/)
+- 💻 **Le dépôt du défi** : [github.com/PierreWZK/30DaysProjects](https://github.com/PierreWZK/30DaysProjects)
+- ⬅️ **Jour précédent** : [Kairos, réservation de créneaux](https://kairos.projectp.fr/)
+- ➡️ **Jour suivant** : [Pécule, tableau de dépenses](https://pecule.projectp.fr/)
